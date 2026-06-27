@@ -22,9 +22,7 @@
    RESET
 ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
-
 body {
   background: var(--paper);
   color: var(--ink);
@@ -33,10 +31,8 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
-
 a { color: inherit; text-decoration: none; }
 a:hover { color: var(--gold); }
-
 img { max-width: 100%; display: block; }
 
 /* ───────────────────────────────────────────
@@ -68,6 +64,9 @@ nav {
   color: var(--ink);
 }
 
+.nav-name a { color: inherit; }
+.nav-name a:hover { color: var(--gold); }
+
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -80,140 +79,58 @@ nav {
   text-transform: uppercase;
   color: var(--ink-soft);
   transition: color 0.2s;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
 }
 
 .nav-links a:hover { color: var(--gold); }
+.nav-links a.active {
+  color: var(--ink);
+  border-bottom-color: var(--gold);
+}
 
 /* ───────────────────────────────────────────
-   HERO
+   PAGE HEADER (used on inner pages)
 ─────────────────────────────────────────── */
-.hero {
-  padding: 140px 2rem 100px;
+.page-header {
+  padding: 120px 2rem 60px;
   border-bottom: 1px solid var(--rule);
 }
 
-.hero-inner {
+.page-header-inner {
   max-width: var(--max-w);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 4rem;
-  align-items: center;
 }
 
-.hero-eyebrow {
-  font-family: var(--font-body);
+.page-eyebrow {
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.75rem;
 }
 
-.hero h1 {
+.page-header h1 {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
   font-weight: 400;
-  line-height: 1.0;
-  letter-spacing: -0.01em;
+  line-height: 1.1;
   color: var(--ink);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.hero-sub {
-  font-size: 1.05rem;
+.page-header p {
+  font-size: 1rem;
   color: var(--ink-mid);
-  max-width: 520px;
+  max-width: 580px;
   line-height: 1.8;
-  margin-bottom: 2rem;
-}
-
-.hero-links {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  display: inline-block;
-  padding: 0.6rem 1.4rem;
-  background: var(--ink);
-  color: var(--paper);
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  border: 1px solid var(--ink);
-  transition: background 0.2s, color 0.2s;
-}
-
-.btn-primary:hover {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: var(--ink);
-}
-
-.btn-secondary {
-  display: inline-block;
-  padding: 0.6rem 1.4rem;
-  background: transparent;
-  color: var(--ink);
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  border: 1px solid var(--rule);
-  transition: border-color 0.2s, color 0.2s;
-}
-
-.btn-secondary:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
-/* Hero visual */
-.hero-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.rheology-visual {
-  width: 280px;
-  height: 280px;
-  opacity: 0.85;
-}
-
-.rheology-visual svg {
-  width: 100%;
-  height: 100%;
-}
-
-.chain {
-  animation: flow 6s ease-in-out infinite alternate;
-  transform-origin: center;
-}
-
-.chain:nth-child(2) { animation-delay: -1s; }
-.chain:nth-child(3) { animation-delay: -2.5s; }
-.chain:nth-child(4) { animation-delay: -4s; }
-.chain:nth-child(5) { animation-delay: -5s; }
-
-@keyframes flow {
-  0%   { opacity: 0.3; }
-  50%  { opacity: 0.8; }
-  100% { opacity: 0.4; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .chain { animation: none; }
 }
 
 /* ───────────────────────────────────────────
    SECTIONS
 ─────────────────────────────────────────── */
-.section { padding: 80px 2rem; }
+.section { padding: 70px 2rem; }
 .section-alt { background: var(--paper-alt); }
 
 .container {
@@ -228,7 +145,7 @@ nav {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
   font-weight: 400;
   color: var(--ink);
   margin-bottom: 1rem;
@@ -250,7 +167,45 @@ nav {
 }
 
 /* ───────────────────────────────────────────
-   RESEARCH GRID
+   BUTTONS
+─────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn-primary:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule);
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ───────────────────────────────────────────
+   RESEARCH GRID (shared: homepage + research page)
 ─────────────────────────────────────────── */
 .research-grid {
   display: grid;
@@ -265,10 +220,7 @@ nav {
   padding: 2rem;
   transition: background 0.2s;
 }
-
-.research-card:hover {
-  background: var(--paper-alt);
-}
+.research-card:hover { background: var(--paper-alt); }
 
 .card-number {
   font-family: var(--font-display);
@@ -302,12 +254,11 @@ nav {
 }
 
 /* ───────────────────────────────────────────
-   PUBLICATIONS
+   PUBLICATIONS (shared)
 ─────────────────────────────────────────── */
 .pub-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .pub-item {
@@ -318,10 +269,7 @@ nav {
   border-bottom: 1px solid var(--rule);
   align-items: start;
 }
-
-.pub-item:first-child {
-  border-top: 1px solid var(--rule);
-}
+.pub-item:first-child { border-top: 1px solid var(--rule); }
 
 .pub-year {
   font-family: var(--font-display);
@@ -351,23 +299,19 @@ nav {
 }
 
 /* ───────────────────────────────────────────
-   CV / BACKGROUND
+   CV ITEMS (shared)
 ─────────────────────────────────────────── */
-.cv-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-}
-
 .cv-group-title {
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--ink);
   margin-bottom: 1.5rem;
+  margin-top: 3rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--rule);
 }
+.cv-group-title:first-child { margin-top: 0; }
 
 .cv-item {
   display: grid;
@@ -389,25 +333,22 @@ nav {
   flex-direction: column;
   gap: 0.15rem;
 }
-
 .cv-detail strong {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--ink);
 }
-
 .cv-detail span {
   font-size: 0.82rem;
   color: var(--ink-soft);
 }
 
 /* ───────────────────────────────────────────
-   CONTACT
+   CONTACT BLOCK (shared)
 ─────────────────────────────────────────── */
 .contact-block {
   display: flex;
   flex-direction: column;
-  gap: 0;
   border: 1px solid var(--rule);
 }
 
@@ -419,10 +360,7 @@ nav {
   border-bottom: 1px solid var(--rule);
   align-items: center;
 }
-
-.contact-item:last-child {
-  border-bottom: none;
-}
+.contact-item:last-child { border-bottom: none; }
 
 .contact-label {
   font-size: 0.75rem;
@@ -438,16 +376,8 @@ nav {
   border-bottom: 1px solid var(--gold-light);
   transition: color 0.2s, border-color 0.2s;
 }
-
-.contact-item a:hover {
-  color: var(--gold);
-  border-color: var(--gold);
-}
-
-.contact-item span {
-  font-size: 0.9rem;
-  color: var(--ink-mid);
-}
+.contact-item a:hover { color: var(--gold); border-color: var(--gold); }
+.contact-item span { font-size: 0.9rem; color: var(--ink-mid); }
 
 /* ───────────────────────────────────────────
    FOOTER
@@ -456,7 +386,6 @@ footer {
   padding: 2rem;
   border-top: 1px solid var(--rule);
 }
-
 footer p {
   font-size: 0.8rem;
   color: var(--ink-soft);
@@ -465,26 +394,27 @@ footer p {
 }
 
 /* ───────────────────────────────────────────
-   RESPONSIVE
+   FADE-IN (JS hook)
 ─────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-  }
-  .hero-visual {
-    display: none;
-  }
-  .cv-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
+/* ───────────────────────────────────────────
+   RESPONSIVE
+─────────────────────────────────────────── */
 @media (max-width: 600px) {
   .nav-links { display: none; }
-  .hero { padding: 100px 1.5rem 60px; }
-  .section { padding: 60px 1.5rem; }
+  .section { padding: 50px 1.5rem; }
+  .page-header { padding: 100px 1.5rem 50px; }
   .research-grid { grid-template-columns: 1fr; }
   .pub-item { grid-template-columns: 1fr; gap: 0.25rem; }
   .pub-year { font-size: 0.82rem; }
+  .cv-item { grid-template-columns: 48px 1fr; }
 }

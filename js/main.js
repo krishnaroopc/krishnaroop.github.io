@@ -1,38 +1,25 @@
-// Active nav link on scroll
-const sections = document.querySelectorAll('section[id], header[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
+// ── Active nav link based on current page ──
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('.nav-links a').forEach(link => {
+  const href = link.getAttribute('href');
+  if (
+    href === currentPage ||
+    (currentPage === '' && href === 'index.html') ||
+    (currentPage === 'index.html' && href === 'index.html')
+  ) {
+    link.classList.add('active');
+  }
+});
 
+// ── Fade-in on scroll ──
+const fadeEls = document.querySelectorAll('.fade-in');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + entry.target.id) {
-          link.classList.add('active');
-        }
-      });
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
     }
   });
-}, { rootMargin: '-40% 0px -55% 0px' });
+}, { threshold: 0.08 });
 
-sections.forEach(s => observer.observe(s));
-
-// Fade in on scroll
-const fadeEls = document.querySelectorAll('.research-card, .pub-item, .cv-item');
-
-const fadeObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-      fadeObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-fadeEls.forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(16px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  fadeObserver.observe(el);
-});
+fadeEls.forEach(el => observer.observe(el));
