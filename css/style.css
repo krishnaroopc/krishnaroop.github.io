@@ -98,10 +98,10 @@ nav {
   border-bottom: 1px solid var(--gold);
 }
 
-.page-header .page-eyebrow { color: var(--gold-light); }
+.page-header .page-eyebrow { color: #9fc3f5; }
 .page-header h1 { color: #ffffff; }
-.page-header p { color: #a8c8f0; }
-.page-header p a { color: var(--gold-light); border-bottom-color: var(--gold); }
+.page-header p { color: #d3e4f7; }
+.page-header p a { color: #bcd8f7; border-bottom-color: #bcd8f7; }
 
 .page-header-inner {
   max-width: var(--max-w);
@@ -236,6 +236,29 @@ nav {
   margin-bottom: 0.75rem;
 }
 
+.research-thumb {
+  width: 100%;
+  height: 170px;
+  background: var(--paper-alt);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.research-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .research-card h3 {
   font-family: var(--font-display);
   font-size: 1.15rem;
@@ -269,23 +292,24 @@ nav {
 
 .pub-item {
   display: grid;
-  grid-template-columns: 52px 72px 1fr;
-  gap: 1rem;
-  padding: 0.85rem 0;
+  grid-template-columns: 130px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
   border-bottom: 1px solid var(--rule);
   align-items: start;
 }
+.pub-item:first-child { border-top: 1px solid var(--rule); }
 
 .pub-thumb {
-  width: 72px;
-  height: 72px;
+  width: 130px;
+  height: 130px;
   background: var(--paper-alt);
   border: 1px solid var(--rule);
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--ink-soft);
@@ -297,21 +321,12 @@ nav {
   object-fit: cover;
   display: block;
 }
-.pub-item:first-child { border-top: 1px solid var(--rule); }
-
-.pub-year {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--gold);
-  padding-top: 0.1rem;
-  font-style: italic;
-}
 
 .pub-title {
-  font-size: 0.92rem;
+  font-size: 1.1rem;
   font-weight: 500;
   color: var(--ink);
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.35rem;
   line-height: 1.4;
 }
 .pub-title a {
@@ -325,10 +340,10 @@ nav {
 }
 
 .pub-authors {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--ink-mid);
-  margin-bottom: 0.1rem;
-  line-height: 1.4;
+  margin-bottom: 0.2rem;
+  line-height: 1.5;
 }
 .pub-authors .me {
   font-weight: 700;
@@ -336,8 +351,13 @@ nav {
 }
 
 .pub-journal {
-  font-size: 0.78rem;
+  font-size: 0.92rem;
   color: var(--ink-soft);
+}
+.pub-journal .pub-year {
+  font-weight: 600;
+  color: var(--ink-mid);
+  font-style: normal;
 }
 
 /* ───────────────────────────────────────────
@@ -420,6 +440,78 @@ nav {
 }
 .contact-item a:hover { color: var(--gold); border-color: var(--gold); }
 .contact-item span { font-size: 0.9rem; color: var(--ink-mid); }
+
+/* ───────────────────────────────────────────
+   SKILL LIST (Skills page cards)
+─────────────────────────────────────────── */
+.skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.skill-list li {
+  font-size: 0.88rem;
+  color: var(--ink-mid);
+  line-height: 1.5;
+  padding: 0.35rem 0 0.35rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.skill-list li:last-child { border-bottom: none; }
+.skill-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ───────────────────────────────────────────
+   PHOTO GALLERY (Outside Work)
+─────────────────────────────────────────── */
+.fun-block { margin-bottom: 3.5rem; }
+.fun-block h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+.fun-block p {
+  font-size: 0.95rem;
+  color: var(--ink-mid);
+  margin-bottom: 1.25rem;
+  max-width: 600px;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.photo-thumb {
+  aspect-ratio: 4 / 3;
+  background: var(--paper-alt);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  overflow: hidden;
+}
+.photo-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
 /* ───────────────────────────────────────────
    FOOTER
