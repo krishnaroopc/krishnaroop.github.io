@@ -2,14 +2,14 @@
    TOKENS
 ─────────────────────────────────────────── */
 :root {
-  --ink:       #0f172a;
-  --ink-mid:   #1e293b;
-  --ink-soft:  #64748b;
-  --paper:     #f8fafc;
-  --paper-alt: #f1f5f9;
-  --gold:      #0ea5e9;
-  --gold-light:#7dd3fc;
-  --rule:      #cbd5e1;
+  --ink:       #020b1a;
+  --ink-mid:   #0a1e3d;
+  --ink-soft:  #2b5fa0;
+  --paper:     #d6eaff;
+  --paper-alt: #b8d8ff;
+  --gold:      #0047e0;
+  --gold-light:#3b9eff;
+  --rule:      #7ab5f0;
 
   --font-display: 'Poppins', system-ui, sans-serif;
   --font-body:    'Open Sans', system-ui, sans-serif;
@@ -42,7 +42,7 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(249, 247, 244, 0.92);
+  background: rgba(180, 215, 255, 0.97);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--rule);
 }
@@ -94,8 +94,14 @@ nav {
 ─────────────────────────────────────────── */
 .page-header {
   padding: 120px 2rem 60px;
-  border-bottom: 1px solid var(--rule);
+  background: var(--ink-mid);
+  border-bottom: 1px solid var(--gold);
 }
+
+.page-header .page-eyebrow { color: var(--gold-light); }
+.page-header h1 { color: #ffffff; }
+.page-header p { color: #a8c8f0; }
+.page-header p a { color: var(--gold-light); border-bottom-color: var(--gold); }
 
 .page-header-inner {
   max-width: var(--max-w);
@@ -285,6 +291,15 @@ nav {
   color: var(--ink);
   margin-bottom: 0.3rem;
   line-height: 1.5;
+}
+.pub-title a {
+  color: var(--gold);
+  border-bottom: 1px solid var(--gold-light);
+  transition: color 0.2s, border-color 0.2s;
+}
+.pub-title a:hover {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold-light);
 }
 
 .pub-authors {
