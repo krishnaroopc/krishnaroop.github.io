@@ -2,14 +2,14 @@
    TOKENS
 ─────────────────────────────────────────── */
 :root {
-  --ink:       #020b1a;
-  --ink-mid:   #0a1e3d;
-  --ink-soft:  #2b5fa0;
-  --paper:     #d6eaff;
-  --paper-alt: #b8d8ff;
-  --gold:      #0047e0;
-  --gold-light:#3b9eff;
-  --rule:      #7ab5f0;
+  --ink:       #0a1628;
+  --ink-mid:   #1b3a5f;
+  --ink-soft:  #4a5b6e;
+  --paper:     #ffffff;
+  --paper-alt: #f2f6fb;
+  --gold:      #1d4ed8;
+  --gold-light:#3b82f6;
+  --rule:      #1e3a5f;
 
   --font-display: 'Poppins', system-ui, sans-serif;
   --font-body:    'Open Sans', system-ui, sans-serif;
@@ -42,7 +42,7 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(180, 215, 255, 0.97);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--rule);
 }
@@ -269,11 +269,33 @@ nav {
 
 .pub-item {
   display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: 1.5rem;
-  padding: 1.75rem 0;
+  grid-template-columns: 52px 72px 1fr;
+  gap: 1rem;
+  padding: 0.85rem 0;
   border-bottom: 1px solid var(--rule);
   align-items: start;
+}
+
+.pub-thumb {
+  width: 72px;
+  height: 72px;
+  background: var(--paper-alt);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  overflow: hidden;
+}
+.pub-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .pub-item:first-child { border-top: 1px solid var(--rule); }
 
@@ -286,11 +308,11 @@ nav {
 }
 
 .pub-title {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 500;
   color: var(--ink);
-  margin-bottom: 0.3rem;
-  line-height: 1.5;
+  margin-bottom: 0.15rem;
+  line-height: 1.4;
 }
 .pub-title a {
   color: var(--gold);
@@ -303,13 +325,18 @@ nav {
 }
 
 .pub-authors {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--ink-mid);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.1rem;
+  line-height: 1.4;
+}
+.pub-authors .me {
+  font-weight: 700;
+  color: var(--gold);
 }
 
 .pub-journal {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--ink-soft);
 }
 
